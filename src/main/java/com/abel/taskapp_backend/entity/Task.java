@@ -1,6 +1,8 @@
 package com.abel.taskapp_backend.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -21,14 +23,16 @@ import java.time.LocalDateTime;
 public class Task {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String title;
     private String description;
-    private String status;
+    private String status = "pending";
     private Integer priority;
     private LocalDate dueDate;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private String category;
+    private String category = "Unassigned";
 
 }

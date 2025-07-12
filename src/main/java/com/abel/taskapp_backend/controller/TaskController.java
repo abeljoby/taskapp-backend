@@ -85,5 +85,4 @@ public class TaskController {
         return ResponseEntity.ok().body("Deleted Task successfully");
     }
 
-
 }

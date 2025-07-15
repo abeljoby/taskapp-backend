@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Controller class is where all the user requests are handled and required/appropriate
- * responses are sent
- */
 @RestController
 @RequestMapping("/tasks/v1")
 @RequiredArgsConstructor
@@ -21,63 +17,34 @@ public class TaskController {
 
     private final TaskService TaskService;
 
-    /**
-     * This method is called when a GET request is made
-     * URL: localhost:8080/Task/v1/
-     * Purpose: Fetches all the Tasks in the Task table
-     * @return List of Tasks
-     */
+    // GET ALL TASKS
     @GetMapping("/")
     public ResponseEntity<List<Task>> getAllTasks(){
         return ResponseEntity.ok().body(TaskService.getAllTasks());
     }
 
-    /**
-     * This method is called when a GET request is made
-     * URL: localhost:8080/Task/v1/1 (or any other id)
-     * Purpose: Fetches Task with the given id
-     * @param id - Task id
-     * @return Task with the given id
-     */
+    // GET A TASK
     @GetMapping("/{id}")
     public ResponseEntity<Task> getTaskById(@PathVariable Integer id)
     {
         return ResponseEntity.ok().body(TaskService.getTaskById(id));
     }
 
-    /**
-     * This method is called when a POST request is made
-     * URL: localhost:8080/Task/v1/
-     * Purpose: Save an Task entity
-     * @param Task - Request body is an Task entity
-     * @return Saved Task entity
-     */
+    // CREATE A TASK
     @PostMapping("/")
     public ResponseEntity<Task> saveTask(@RequestBody Task Task)
     {
         return ResponseEntity.ok().body(TaskService.saveTask(Task));
     }
 
-    /**
-     * This method is called when a PUT request is made
-     * URL: localhost:8080/Task/v1/
-     * Purpose: Update an Task entity
-     * @param Task - Task entity to be updated
-     * @return Updated Task
-     */
+    // UPDATE TASK
     @PutMapping("/")
     public ResponseEntity<Task> updateTask(@RequestBody Task Task)
     {
         return ResponseEntity.ok().body(TaskService.updateTask(Task));
     }
 
-    /**
-     * This method is called when a PUT request is made
-     * URL: localhost:8080/Task/v1/1 (or any other id)
-     * Purpose: Delete an Task entity
-     * @param id - Task's id to be deleted
-     * @return a String message indicating Task record has been deleted successfully
-     */
+    // DELETE TASK
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTaskById(@PathVariable Integer id)
     {

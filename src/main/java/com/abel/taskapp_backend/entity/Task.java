@@ -12,9 +12,6 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/**
- * An entity class represents a table in a relational database
- */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
